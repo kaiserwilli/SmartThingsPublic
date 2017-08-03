@@ -1,5 +1,5 @@
 metadata {
-    definition(name: "Sonoff-Tasmota", namespace: "BrettSheleski", author: "Brett Sheleski") {
+    definition(name: "Sonoff-Tasmota", namespace: "kaiserwilli", author: "Brett Sheleski") {
 		capability "Switch"
 		capability "Momentary"
 		capability "Polling"
