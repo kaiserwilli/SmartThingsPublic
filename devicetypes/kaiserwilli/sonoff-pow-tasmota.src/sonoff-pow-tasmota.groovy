@@ -4,6 +4,9 @@ metadata {
 		capability "Momentary"
 		capability "Polling"
 		capability "Refresh"
+		capability "Sensor"
+		capability "Voltage Measurement"
+		capability "Power Meter"
     }
 
 	// UI tile definitions
@@ -18,13 +21,12 @@ metadata {
 		standardTile("refresh", "device.switch", width: 2, height: 2, inactiveLabel: false, decoration: "flat") {
 			state "default", label:'', action:"refresh.refresh", icon:"st.secondary.refresh"
 		}
-		
-		standardTile("reboot", "device.reboot", decoration: "flat", height: 2, width: 2, inactiveLabel: false) {
-            state "default", label:"Reboot", action:"reboot", icon:"", backgroundColor:"#ffffff"
-        }
+		valueTile("power", "device.power", width: 2, height: 2) {
+			state "default", label:'${currentValue} W'
+		}
 
 		main "switch"
-		details(["switch","refresh","reboot"])
+		details(["switch","refresh"])
 	}
 
     preferences {
@@ -113,12 +115,6 @@ def poll(){
 
 	requestStatus()
 
-}
-
-
-def reboot(){
-	log.debug "REBOOT"
-    sendCommand("Restart", "1");
 }
 
 def refresh(){
