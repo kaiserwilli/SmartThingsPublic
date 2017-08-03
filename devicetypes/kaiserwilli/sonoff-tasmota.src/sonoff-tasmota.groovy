@@ -4,6 +4,8 @@ metadata {
 		capability "Momentary"
 		capability "Polling"
 		capability "Refresh"
+        
+        command "reboot"
     }
 
 	// UI tile definitions
